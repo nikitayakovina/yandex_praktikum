@@ -1,0 +1,15 @@
+<div class="auth">
+    <div class="auth__container">
+        <header class="auth__title">
+            <h1 class="auth__title__text">{{ title }}</h1>
+        </header>
+        <main class="auth__form">
+            {{#each inputs}}
+                {{> Input this}}
+            {{/each}}
+        </main>
+        <footer>
+            {{> Footer footer }}
+        </footer>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+@import '../../style.scss';
+
+.form {
+    background-color: $inputFon;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: Arial, sans-serif;
+    width: 269px;
+}
+
+.label {
+    font-size: 12px;
+    color: gray;
+}
+
+.input {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    padding: 8px;
+    border-radius: 4px;
+}
