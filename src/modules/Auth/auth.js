@@ -3,6 +3,7 @@ import Handlebars from "handlebars";
 import '../../modules/Auth/auth.scss';
 import Input from '../../components/Input/input.js';
 import Footer from '../../components/Footer/footer.js';
+import chats from '../../pages/chats.hbs';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Footer', Footer);
@@ -43,8 +44,8 @@ export default class Auth {
 
         this.container.innerHTML = auth(data);
 
-        // document.getElementById('button').addEventListener('click', () => {
-        //     this.container.innerHTML = registration();``
-        // })
+        document.getElementById('signin').addEventListener('click', () => {
+            this.container.innerHTML = chats();
+        })
     }
 }
