@@ -1,5 +1,7 @@
 @import '../../style.scss';
-
+.selected {
+    background-color: $blueChatMessage;
+}
 .profile {
     display: flex;
     height: 77px;

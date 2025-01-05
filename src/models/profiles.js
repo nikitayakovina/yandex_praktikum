@@ -10,7 +10,8 @@ export const profilesList = [
         first_name: 'first_name',
         second_name: 'second_name',
         display_name: 'display_name',
-        phone: 'phone'
+        phone: 'phone',
+        selected: false
     },
     {
         id: '2',
@@ -21,7 +22,8 @@ export const profilesList = [
         first_name: 'first2_name',
         second_name: 'second2_name',
         display_name: 'display2_name',
-        phone: 'phone2'
+        phone: 'phone2',
+        selected: false
     },
 ];
 

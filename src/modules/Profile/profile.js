@@ -25,30 +25,40 @@ export default class Profile {
     displayTemplate() {
         this.container.innerHTML = profile(this.data);
 
+        if (this.data?.profile) {
+            document.getElementById('main__actions').addEventListener('click', (event) => {
+                const actionElement = event.target.closest('.action');
+                const actionId = actionElement?.dataset?.id;
+    
+                if (actionElement && actionId === 'changeData') {
+                    // save
+                } else if (actionElement && actionId === 'changePassword') {
+                    this.mode = 'changePassword';
+                    this.data.profile = { ...this.data.profile, mode: this.mode };
+                    this.displayTemplate();
+                } else if (actionElement && actionId === 'exit') {
+                    // exit
+                } else if (actionElement && actionId === 'cancel') {
+                    this.mode = null;
+                    this.data.profile = { ...this.data.profile, mode: this.mode };
+                    this.displayTemplate();
+                } else if (actionElement && actionId === 'save') {
+                    // savePassword
+                }
+            })
+        }
+
         document.getElementById('profiles__sidebar__list').addEventListener('click', (event) => {
             const profileElement = event.target.closest('.profile');
 
             if (profileElement) {
+                profilesList.forEach(item => item.selected = false);
+
                 const profile = profilesList.find(profile => Number(profile.id) === Number(profileElement?.dataset?.id));
+                profile.selected = true;
 
                 this.data = { ...this.data, profile };
                 this.displayTemplate();
-
-                document.getElementById('main__actions').addEventListener('click', (event) => {
-                    const actionElement = event.target.closest('.action');
-                    const actionId = actionElement?.dataset?.id;
-                    console.log(actionId)
-        
-                    if (actionElement && actionId === 'changeData') {
-
-                    } else if (actionElement && actionId === 'changePassword') {
-                        this.mode = 'changePassword';
-                        this.data.profile = { ...this.data.profile, mode: this.mode };
-                        this.displayTemplate();
-                    } else if (actionElement && actionId === 'exit') {
-                        
-                    }
-                })
             }
         })
 

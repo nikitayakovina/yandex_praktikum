@@ -2,7 +2,9 @@ import './profileInfo.scss';
 
 export default `
     <div class="main">
-        <div class="main__avatar"></div>
+        <div class="main__avatar">
+            <img src="src/static/circle_gray.svg">
+        </div>
         <div class="main__name">
             <span>{{ first_name }}</span>
         </div>

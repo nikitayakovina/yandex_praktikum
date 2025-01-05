@@ -1,7 +1,7 @@
 import './profileSelected.scss';
 
 export default `
-    <div class="profile" id="profile" data-id="{{ id }}">
+    <div class="profile {{#if selected}}selected{{/if}}" id="profile" data-id="{{ id }}">
         <div class="profile__image">
             <img src="{{ imgSrc }}">
         </div>
