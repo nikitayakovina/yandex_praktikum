@@ -12,13 +12,12 @@
         border-radius: 5%;
 
         footer {
-            margin-top: 269px;
+            margin-top: 159px;
         }
     }
 
     &__title {
-        display: flex;
-        justify-content: center;
+        justify-self: center;
         margin-top: 30px;
 
         &__text {
@@ -29,6 +28,8 @@
     &__form {
         display: flex;
         flex-direction: column;
-        align-items: center;
+        width: 269px;
+        justify-self: center;
+        margin-top: 55px;
     }
 }

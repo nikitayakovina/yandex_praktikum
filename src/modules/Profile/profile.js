@@ -4,6 +4,7 @@ import Handlebars from "handlebars";
 import ProfileInfo from '../../components/ProfileInfo/profileInfo';
 import ProfileSelected from '../../components/ProfileSelected/profileSelected';
 import { profilesList, inputsProfileSettings } from '../../models/profiles';
+import { onCustomEvent } from '../../utils/event.js';
 
 Handlebars.registerPartial('ProfileSelected', ProfileSelected);
 Handlebars.registerPartial('ProfileInfo', ProfileInfo);
@@ -26,24 +27,30 @@ export default class Profile {
         this.container.innerHTML = profile(this.data);
 
         if (this.data?.profile) {
-            document.getElementById('main__actions').addEventListener('click', (event) => {
+            document.getElementById('main').addEventListener('click', (event) => {
                 const actionElement = event.target.closest('.action');
                 const actionId = actionElement?.dataset?.id;
     
-                if (actionElement && actionId === 'changeData') {
+                if (!actionElement) {
+                    return;
+                }
+
+                if (actionId === 'changeData') {
                     // save
-                } else if (actionElement && actionId === 'changePassword') {
+                } else if (actionId === 'changePassword') {
                     this.mode = 'changePassword';
                     this.data.profile = { ...this.data.profile, mode: this.mode };
                     this.displayTemplate();
-                } else if (actionElement && actionId === 'exit') {
-                    // exit
-                } else if (actionElement && actionId === 'cancel') {
+                } else if (actionId === 'exit') {
+                    onCustomEvent('redirectSignIn');
+                } else if (actionId === 'cancel') {
                     this.mode = null;
                     this.data.profile = { ...this.data.profile, mode: this.mode };
                     this.displayTemplate();
-                } else if (actionElement && actionId === 'save') {
+                } else if (actionId === 'save') {
                     // savePassword
+                } else if (actionId === 'changePhoto') {
+                    // changePhoto
                 }
             })
         }
@@ -62,7 +69,9 @@ export default class Profile {
             }
         })
 
-        
+        document.getElementById('profiles__sidebar__header').addEventListener('click', (event) => {
+            // назад
+        })
     }
 
     render() {

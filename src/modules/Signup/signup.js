@@ -52,14 +52,27 @@ export default class SignUp {
             footer: {
                 title: 'Зарегистрироваться',
                 linkText: 'Войти',
-                link: 'signin'
+                id: 'signUp',
+                link: 'redirectSignIn'
             }
         };
 
         this.container.innerHTML = signup(data);
 
-        // document.getElementById('button').addEventListener('click', () => {
-        //     this.container.innerHTML = registration();``
-        // })
+
+        document.getElementById('footer').addEventListener('click', (event) => {
+            const element = event.target.closest('.action');
+            const id = element?.dataset?.id;
+            
+            if (id === 'signUp') {
+                this.redirect('chats');
+            } else {
+                this.redirect(id);
+            }
+        });
+    }
+
+    redirect(page) {
+        window.dispatchEvent(new CustomEvent('navigate', { detail: { page } }));
     }
 }

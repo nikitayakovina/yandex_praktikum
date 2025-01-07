@@ -4,6 +4,8 @@ import '../../modules/Auth/auth.scss';
 import Input from '../../components/Input/input.js';
 import Footer from '../../components/Footer/footer.js';
 import chats from '../../pages/chats.hbs';
+import profile from '../../pages/profile.hbs';
+import { onCustomEvent } from '../../utils/event.js';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Footer', Footer);
@@ -38,14 +40,22 @@ export default class Auth {
             footer: {
                 title: 'Войти',
                 linkText: 'Нет аккаунта?',
-                link: 'signup'
+                id: 'signIn',
+                link: 'redirectSignUp'
             }
         };
 
         this.container.innerHTML = auth(data);
 
-        document.getElementById('signin').addEventListener('click', () => {
-            this.container.innerHTML = chats();
-        })
+        document.getElementById('footer').addEventListener('click', (event) => {
+            const element = event.target.closest('.action');
+            const id = element?.dataset?.id;
+            
+            if (id === 'signIn') {
+                onCustomEvent('profile');
+            } else {
+                onCustomEvent(id);
+            }
+        });
     }
 }

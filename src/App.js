@@ -7,30 +7,29 @@ import SignUp from "./modules/Signup/signup";
 export default class App {
     appTemplate = document.getElementById('app');
     pages = {
-        signin: new Auth(this.appTemplate),
-        signup: new SignUp(this.appTemplate),
+        redirectSignIn: new Auth(this.appTemplate),
+        redirectSignUp: new SignUp(this.appTemplate),
         chats: new Chats(this.appTemplate),
         profile: new Profile(this.appTemplate),
-        notFound: new NotFound(this.appTemplate),
+        notFound: new NotFound(this.appTemplate)
     };
 
     constructor() {}
 
     init() {
-        this.pages['profile'].render();
+        // this.pages.redirectSignIn.render();
+        this.pages.notFound.render();
 
-        window.addEventListener('popstate', (event) => {
-            event.stopPropagation();
+        window.addEventListener('navigate', (event) => {
+            const page = event.detail.page;
 
-            const href = window.location.href;
-            const link = href.split('/').reverse()[0];
+            if (!this.pages[page]) {
+                this.pages.notFound.render();
 
-            if (!this.pages[link]) {
-                // redirect 404
                 return;
             }
             
-            this.pages[link].render();
+            this.pages[page].render();
         });
     }
 }
