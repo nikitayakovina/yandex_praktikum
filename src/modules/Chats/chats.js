@@ -1,5 +1,5 @@
 import chats from '../../pages/chats.hbs';
-import '../../modules/Chats/chats.scss';
+import './chats.scss';
 
 export default class Chats {
     container;

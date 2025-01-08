@@ -1,5 +1,5 @@
 import signup from '../../pages/signup.hbs';
-import '../../modules/SignUp/signup.scss';
+import './signup.scss';
 import { onCustomEvent } from '../../utils/event.js';
 import { profilesList } from '../../models/profiles';
 

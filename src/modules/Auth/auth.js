@@ -1,6 +1,6 @@
 import auth from '../../pages/auth.hbs';
 import Handlebars from "handlebars";
-import '../../modules/Auth/auth.scss';
+import './auth.scss';
 import Input from '../../components/Input/input.js';
 import Footer from '../../components/Footer/footer.js';
 import chats from '../../pages/chats.hbs';

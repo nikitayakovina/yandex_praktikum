@@ -1,5 +1,5 @@
 import profile from '../../pages/profile.hbs';
-import '../../modules/Profile/profile.scss';
+import './profile.scss';
 import Handlebars from "handlebars";
 import ProfileInfo from '../../components/ProfileInfo/profileInfo';
 import ProfileSelected from '../../components/ProfileSelected/profileSelected';
