@@ -5,5 +5,8 @@ export default defineConfig({
   plugins: [
     handlebars()
   ],
-  publicDir: './src/static'
+  publicDir: './src/static',
+  build: {
+    polyfillModulePreload: false
+  }
 })
