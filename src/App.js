@@ -17,8 +17,7 @@ export default class App {
     constructor() {}
 
     init() {
-        // this.pages.redirectSignIn.render();
-        this.pages.notFound.render();
+        this.pages.redirectSignIn.render();
 
         window.addEventListener('navigate', (event) => {
             const page = event.detail.page;

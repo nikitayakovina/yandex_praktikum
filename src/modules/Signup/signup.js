@@ -1,5 +1,7 @@
 import signup from '../../pages/signup.hbs';
 import '../../modules/SignUp/signup.scss';
+import { onCustomEvent } from '../../utils/event.js';
+import { profilesList } from '../../models/profiles';
 
 export default class SignUp {
     container;
@@ -35,6 +37,13 @@ export default class SignUp {
                     placeholder: "Введите логин"
                 },
                 {
+                    labelFor: "phone",
+                    label: "Телефон",
+                    id: "phone",
+                    name: "phone",
+                    placeholder: "Введите телефон"
+                },
+                {
                     labelFor: "password",
                     label: "Пароль",
                     id: "password",
@@ -42,11 +51,11 @@ export default class SignUp {
                     placeholder: "Введите пароль"
                 },
                 {
-                    labelFor: "phone",
-                    label: "Телефон",
-                    id: "phone",
-                    name: "phone",
-                    placeholder: "Введите телефон"
+                    labelFor: "repeatPassword",
+                    label: "Повторите пароль",
+                    id: "repeatPassword",
+                    name: "repeatPassword",
+                    placeholder: "Введите пароль еще раз"
                 },
             ],
             footer: {
@@ -59,20 +68,15 @@ export default class SignUp {
 
         this.container.innerHTML = signup(data);
 
-
         document.getElementById('footer').addEventListener('click', (event) => {
-            const element = event.target.closest('.action');
+            const element = event.target.closest('.footer__action');
             const id = element?.dataset?.id;
             
             if (id === 'signUp') {
-                this.redirect('chats');
+                onCustomEvent('chats');
             } else {
-                this.redirect(id);
+                onCustomEvent(id);
             }
         });
-    }
-
-    redirect(page) {
-        window.dispatchEvent(new CustomEvent('navigate', { detail: { page } }));
     }
 }

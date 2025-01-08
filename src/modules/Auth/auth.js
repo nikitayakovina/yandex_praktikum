@@ -48,7 +48,7 @@ export default class Auth {
         this.container.innerHTML = auth(data);
 
         document.getElementById('footer').addEventListener('click', (event) => {
-            const element = event.target.closest('.action');
+            const element = event.target.closest('.footer__action');
             const id = element?.dataset?.id;
             
             if (id === 'signIn') {

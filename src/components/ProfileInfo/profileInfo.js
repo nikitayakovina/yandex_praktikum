@@ -3,7 +3,7 @@ import './profileInfo.scss';
 export default `
     <div class="main" id="main">
         <div class="main__avatar action" data-id="changePhoto">
-            <img src="src/static/circle_gray.svg">
+            <img src="src/static/img/circle_gray.svg">
         </div>
         <div class="main__name">
             <span>{{ first_name }}</span>
