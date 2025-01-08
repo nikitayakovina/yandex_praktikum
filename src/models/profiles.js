@@ -2,7 +2,7 @@
 export const profilesList = [
     {
         id: '1',
-        imgSrc: 'src/static/img/circle_gray.svg',
+        imgSrc: '/img/circle_gray.svg',
         name: 'test',
         login: 'test',
         password: 'password',
@@ -15,7 +15,7 @@ export const profilesList = [
     },
     {
         id: '2',
-        imgSrc: 'src/static/img/circle_gray.svg',
+        imgSrc: '/img/circle_gray.svg',
         login: 'test2',
         password: 'password2',
         email: 'email2',

@@ -10,7 +10,7 @@ export default `
             <div class="profile__info-login">{{ login }}</div>
         </div>
         <div class="profile__arrow">
-            <img src="src/static/img/arrow.svg">
+            <img src="/img/arrow.svg">
         </div>
     </div>
 `;
