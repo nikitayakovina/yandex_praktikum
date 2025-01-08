@@ -7,6 +7,6 @@ export default defineConfig({
   ],
   publicDir: './src/static',
   build: {
-    polyfillModulePreload: false
+    modulePreload: false
   }
 })
