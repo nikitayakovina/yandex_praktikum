@@ -6,4 +6,4 @@ export default defineConfig({
     handlebars()
   ],
   publicDir: './src/static'
-}) 
+})
