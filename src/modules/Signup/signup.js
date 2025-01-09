@@ -16,17 +16,17 @@ export default class SignUp {
             title: 'Регистрация',
             inputs: [
                 {
-                    labelFor: "firstName",
+                    labelFor: "first_name",
                     label: "Имя",
-                    id: "firstName",
-                    name: "firstName",
+                    id: "first_name",
+                    name: "first_name",
                     placeholder: "Введите имя"
                 },
                 {
-                    labelFor: "secondName",
+                    labelFor: "second_name",
                     label: "Фамилия",
-                    id: "secondName",
-                    name: "secondName",
+                    id: "second_name",
+                    name: "second_name",
                     placeholder: "Введите фамилию"
                 },
                 {
@@ -51,10 +51,10 @@ export default class SignUp {
                     placeholder: "Введите пароль"
                 },
                 {
-                    labelFor: "repeatPassword",
+                    labelFor: "repeat_password",
                     label: "Повторите пароль",
-                    id: "repeatPassword",
-                    name: "repeatPassword",
+                    id: "repeat_password",
+                    name: "repeat_password",
                     placeholder: "Введите пароль еще раз"
                 },
             ],
@@ -71,9 +71,34 @@ export default class SignUp {
         document.getElementById('footer').addEventListener('click', (event) => {
             const element = event.target.closest('.footer__action');
             const id = element?.dataset?.id;
+            let createdProfile = {
+                id: Number(profilesList[profilesList.length-1].id) + 1,
+                imgSrc: '/img/circle_gray.svg'
+            };
             
             if (id === 'signUp') {
-                onCustomEvent('chats');
+                const errorMessage = document.getElementById('errorMessage');
+
+                data.inputs.forEach(input => {
+                    createdProfile[input.id] = document.getElementById(input.id).value;
+                });
+
+                if (!createdProfile?.login) {
+                    errorMessage.textContent = 'Введите логин';
+                    errorMessage.classList.add('errorMessage-visible');
+                } else if (!createdProfile?.password) {
+                    errorMessage.textContent = 'Введите пароль';
+                    errorMessage.classList.add('errorMessage-visible');
+                } else if (!createdProfile?.repeat_password) {
+                    errorMessage.textContent = 'Введите повтор пароля';
+                    errorMessage.classList.add('errorMessage-visible');
+                } else if (createdProfile?.password !== createdProfile?.repeat_password) {
+                    errorMessage.textContent = 'Пароли не совпадают';
+                    errorMessage.classList.add('errorMessage-visible');
+                } else {
+                    profilesList.push(createdProfile);
+                    onCustomEvent('profile');
+                }
             } else {
                 onCustomEvent(id);
             }

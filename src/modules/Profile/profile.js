@@ -3,7 +3,7 @@ import './profile.scss';
 import Handlebars from "handlebars";
 import ProfileInfo from '../../components/ProfileInfo/profileInfo';
 import ProfileSelected from '../../components/ProfileSelected/profileSelected';
-import { profilesList, inputsProfileSettings } from '../../models/profiles';
+import { profilesList } from '../../models/profiles';
 import { onCustomEvent } from '../../utils/event.js';
 
 Handlebars.registerPartial('ProfileSelected', ProfileSelected);
@@ -14,8 +14,7 @@ export default class Profile {
     template;
     profile;
     data = {
-        profiles: profilesList,
-        inputsProfileSettings
+        profiles: profilesList
     };
     mode;
 
@@ -36,7 +35,22 @@ export default class Profile {
                 }
 
                 if (actionId === 'changeData') {
-                    // save
+                    const newProfile = { ...this.data.profile };
+                    const index = profilesList.indexOf(this.data.profile);
+
+                    Object.keys(this.data.profile).forEach(key => {
+                        newProfile[key] = document.getElementById(key)?.value;
+                    });
+
+                    newProfile.id = this.data.profile.id;
+                    newProfile.imgSrc = this.data.profile.imgSrc;
+                    newProfile.selected = this.data.profile.selected;
+                    newProfile.name = this.data.profile.name;
+
+                    profilesList[index] = newProfile;
+                    this.data = { ...this.data, profile: newProfile };
+
+                    this.displayTemplate();
                 } else if (actionId === 'changePassword') {
                     this.mode = 'changePassword';
                     this.data.profile = { ...this.data.profile, mode: this.mode };
@@ -48,9 +62,16 @@ export default class Profile {
                     this.data.profile = { ...this.data.profile, mode: this.mode };
                     this.displayTemplate();
                 } else if (actionId === 'save') {
-                    // savePassword
+                    
                 } else if (actionId === 'changePhoto') {
-                    // changePhoto
+                    
+                } else if (actionId === 'remove') {
+                    const index = profilesList.indexOf(this.data.profile);
+
+                    if (index !== -1) {
+                        profilesList.splice(index, 1);
+                        this.displayTemplate();
+                    }
                 }
             })
         }
@@ -70,7 +91,7 @@ export default class Profile {
         })
 
         document.getElementById('profiles__sidebar__header').addEventListener('click', (event) => {
-            // назад
+            onCustomEvent('chats');
         })
     }
 

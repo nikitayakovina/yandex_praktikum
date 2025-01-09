@@ -1,16 +1,15 @@
-import auth from '../../pages/auth.hbs';
+import signIn from '../../pages/signin.hbs';
 import Handlebars from "handlebars";
-import './auth.scss';
+import './signin.scss';
 import Input from '../../components/Input/input.js';
 import Footer from '../../components/Footer/footer.js';
-import chats from '../../pages/chats.hbs';
-import profile from '../../pages/profile.hbs';
 import { onCustomEvent } from '../../utils/event.js';
+import { profilesList } from '../../models/profiles.js';
 
 Handlebars.registerPartial('Input', Input);
 Handlebars.registerPartial('Footer', Footer);
 
-export default class Auth {
+export default class SignIn {
     container;
     template;
 
@@ -23,19 +22,19 @@ export default class Auth {
             title: 'Вход',
             inputs: [
                 {
+                    labelFor: "login",
+                    label: "Логин",
+                    id: "login",
+                    name: "login",
+                    placeholder: "Введите логин"
+                },
+                {
                     labelFor: "password",
                     label: "Пароль",
                     id: "password",
                     name: "password",
                     placeholder: "Введите пароль"
                 },
-                {
-                    labelFor: "login",
-                    label: "Логин",
-                    id: "login",
-                    name: "login",
-                    placeholder: "Введите логин"
-                }
             ],
             footer: {
                 title: 'Войти',
@@ -45,13 +44,29 @@ export default class Auth {
             }
         };
 
-        this.container.innerHTML = auth(data);
+        this.container.innerHTML = signIn(data);
 
         document.getElementById('footer').addEventListener('click', (event) => {
             const element = event.target.closest('.footer__action');
             const id = element?.dataset?.id;
             
             if (id === 'signIn') {
+                let user = {};
+
+                data.inputs.forEach(input => {
+                    user[input.id] = document.getElementById(input.id).value;
+                });
+
+                const findProfile = profilesList.find(profile => profile.login === user.login);
+                const error = document.getElementById('errorMessage');
+
+                if (!findProfile || findProfile.password !== user.password) {
+                    error.classList.add('errorMessage-visible');
+
+                    return;
+                }
+
+                error.classList.remove('errorMessage-visible');
                 onCustomEvent('profile');
             } else {
                 onCustomEvent(id);

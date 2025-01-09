@@ -1,6 +1,6 @@
 @import "../../style.scss";
 
-.auth {
+.signin {
     display: flex;
     height: 100vh;
 
@@ -33,3 +33,16 @@
         margin-top: 55px;
     }
 }
+
+// .errorMessage {
+//     display: none;
+
+//     &-visible {
+//         color: $red;
+//         display: block;
+//         font-size: 12px;
+//         padding: 0;
+//         margin: 0;
+//         justify-self: center;
+//     }
+// }

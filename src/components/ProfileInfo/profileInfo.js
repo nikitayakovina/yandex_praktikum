@@ -8,7 +8,7 @@ export default `
         <div class="main__name">
             <span>{{ first_name }}</span>
         </div>
-        <div class="main__info">
+        <div class="main__info" id="main__info">
             {{#if mode}}
                 {{> Input 
                     labelFor="password"
@@ -34,14 +34,6 @@ export default `
                 }}
 
                 {{else}}
-                    {{> Input 
-                        labelFor="password"
-                        label="Пароль"
-                        id="password"
-                        name="password"
-                        placeholder="Введите пароль"
-                        value=password
-                    }}
                     {{> Input 
                         labelFor="login"
                         label="Логин"
@@ -99,6 +91,7 @@ export default `
                 {{else}}
                     <span class="main__actions-accept action" data-id="changeData">Изменить данные</span>
                     <span class="main__actions-accept action" data-id="changePassword">Изменить пароль</span>
+                    <span class="main__actions-reject action" data-id="remove">Удалить профиль</span>
                     <span class="main__actions-reject action" data-id="exit">Выйти</span>
             {{/if}}
         </div>

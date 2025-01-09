@@ -1,4 +1,4 @@
-import Auth from "./modules/Auth/auth";
+import SignIn from "./modules/SignIn/signin";
 import Chats from "./modules/Chats/chats";
 import NotFound from "./modules/NotFound/notFound";
 import Profile from "./modules/Profile/profile";
@@ -7,7 +7,7 @@ import SignUp from "./modules/Signup/signup";
 export default class App {
     appTemplate = document.getElementById('app');
     pages = {
-        redirectSignIn: new Auth(this.appTemplate),
+        redirectSignIn: new SignIn(this.appTemplate),
         redirectSignUp: new SignUp(this.appTemplate),
         chats: new Chats(this.appTemplate),
         profile: new Profile(this.appTemplate),
