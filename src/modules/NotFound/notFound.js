@@ -9,15 +9,17 @@ Handlebars.registerPartial('Error', Error);
 export default class NotFound {
     container;
     template = document.getElementById('notFound');
+    code;
 
-    constructor(container) {
+    constructor(container, code = 500) {
         this.container = container;
+        this.code = code;
     }
 
-    render(code = 500) {
+    render() {
         const data = {
-            code,
-            text: this.textByCode(code)
+            code: this.code,
+            text: this.textByCode(this.code)
         };
 
         this.container.innerHTML = notFound(data);

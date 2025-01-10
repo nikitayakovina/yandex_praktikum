@@ -11,7 +11,8 @@ export default class App {
         redirectSignUp: new SignUp(this.appTemplate),
         chats: new Chats(this.appTemplate),
         profile: new Profile(this.appTemplate),
-        notFound: new NotFound(this.appTemplate)
+        notFound500: new NotFound(this.appTemplate),
+        notFound404: new NotFound(this.appTemplate, '404')
     };
 
     constructor() {}
@@ -23,7 +24,7 @@ export default class App {
             const page = event.detail.page;
 
             if (!this.pages[page]) {
-                this.pages.notFound.render();
+                this.pages.notFound404.render();
 
                 return;
             }
