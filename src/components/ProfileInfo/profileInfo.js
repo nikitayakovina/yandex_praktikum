@@ -1,9 +1,10 @@
 import './profileInfo.scss';
 
 export default `
+    <input type="file" id="avatar" class="avatar" accept="image/png, image/jpeg" />
     <div class="main" id="main">
         <div class="main__avatar action" data-id="changePhoto">
-            <img src="/img/circle_gray.svg">
+            <img src="/img/circle_gray.svg" alt="Аватар">
         </div>
         <div class="main__name">
             <span>{{ first_name }}</span>

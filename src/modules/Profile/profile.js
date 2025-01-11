@@ -64,7 +64,12 @@ export default class Profile {
                 } else if (actionId === 'save') {
                     
                 } else if (actionId === 'changePhoto') {
-                    
+                    const fileInput = document.getElementById('avatar');
+
+                    fileInput.click();
+                    fileInput.addEventListener('change', (event) => {
+                        
+                    });
                 } else if (actionId === 'remove') {
                     const index = profilesList.indexOf(this.data.profile);
 
@@ -73,7 +78,7 @@ export default class Profile {
                         this.displayTemplate();
                     }
                 }
-            })
+            });
         }
 
         document.getElementById('profiles__sidebar__list').addEventListener('click', (event) => {
@@ -88,11 +93,11 @@ export default class Profile {
                 this.data = { ...this.data, profile };
                 this.displayTemplate();
             }
-        })
+        });
 
         document.getElementById('profiles__sidebar__header').addEventListener('click', (event) => {
             onCustomEvent('chats');
-        })
+        });
     }
 
     render() {

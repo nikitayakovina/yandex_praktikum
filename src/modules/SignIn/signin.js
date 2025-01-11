@@ -58,15 +58,15 @@ export default class SignIn {
                 });
 
                 const findProfile = profilesList.find(profile => profile.login === user.login);
-                const error = document.getElementById('errorMessage');
+                const error = document.getElementById('error__message');
 
                 if (!findProfile || findProfile.password !== user.password) {
-                    error.classList.add('errorMessage-visible');
+                    error.classList.add('error__message-visible');
 
                     return;
                 }
 
-                error.classList.remove('errorMessage-visible');
+                error.classList.remove('error__message-visible');
                 onCustomEvent('profile');
             } else {
                 onCustomEvent(id);

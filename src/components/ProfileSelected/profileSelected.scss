@@ -7,7 +7,7 @@
 .profile {
     display: flex;
     height: 77px;
-    border-bottom: $devider2;
+    border-bottom: 1px solid $devider;
 
     &:hover {
         cursor: pointer;

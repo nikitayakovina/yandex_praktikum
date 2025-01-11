@@ -7,8 +7,8 @@
 
     &__sidebar {
         width: 30%;
-        background-color: #f4f4f4;
-        border-right: 1px solid #ccc;
+        background-color: $sideBar;
+        border-right: 1px solid $devider;
         box-sizing: border-box;
     
         &__header {
@@ -16,7 +16,7 @@
             align-items: center;
             height: 40px;
             background-color: #ffffff;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid $devider;
             padding-left: 10px;
 
             &-text {
@@ -36,7 +36,7 @@
     
             &-item {
                 padding: 1rem;
-                border-bottom: 1px solid #ddd;
+                border-bottom: 1px solid $devider;
                 cursor: pointer;
                 transition: background-color 0.3s;
     

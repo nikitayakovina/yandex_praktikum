@@ -26,7 +26,7 @@ export default class NotFound {
 
         document.getElementById('error__link').addEventListener('click', event => {
             onCustomEvent('chats')
-        })
+        });
     }
 
     textByCode(code) {

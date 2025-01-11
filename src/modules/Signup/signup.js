@@ -77,7 +77,7 @@ export default class SignUp {
             };
             
             if (id === 'signUp') {
-                const errorMessage = document.getElementById('errorMessage');
+                const errorMessage = document.getElementById('error__message');
 
                 data.inputs.forEach(input => {
                     createdProfile[input.id] = document.getElementById(input.id).value;
@@ -85,16 +85,16 @@ export default class SignUp {
 
                 if (!createdProfile?.login) {
                     errorMessage.textContent = 'Введите логин';
-                    errorMessage.classList.add('errorMessage-visible');
+                    errorMessage.classList.add('error__message-visible');
                 } else if (!createdProfile?.password) {
                     errorMessage.textContent = 'Введите пароль';
-                    errorMessage.classList.add('errorMessage-visible');
+                    errorMessage.classList.add('error__message-visible');
                 } else if (!createdProfile?.repeat_password) {
                     errorMessage.textContent = 'Введите повтор пароля';
-                    errorMessage.classList.add('errorMessage-visible');
+                    errorMessage.classList.add('error__message-visible');
                 } else if (createdProfile?.password !== createdProfile?.repeat_password) {
                     errorMessage.textContent = 'Пароли не совпадают';
-                    errorMessage.classList.add('errorMessage-visible');
+                    errorMessage.classList.add('error__message-visible');
                 } else {
                     profilesList.push(createdProfile);
                     onCustomEvent('profile');
